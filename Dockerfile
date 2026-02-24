@@ -10,6 +10,9 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+# Set PYTHONPATH before installing/running
+ENV PYTHONPATH=/app
+
 # Install any needed packages specified in requirements.txt
 RUN apt-get update && apt-get install -y make libatomic1 && \
     make install && \
@@ -29,9 +32,6 @@ USER 1000:1000
 
 # Make port 8001 available to the world outside this container
 EXPOSE 8001
-
-# Define environment variable
-ENV PYTHONPATH=/app
 
 # Run app via the template Makefile target (which itself uses uv)
 CMD ["make", "run"]

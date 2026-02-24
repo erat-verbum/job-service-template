@@ -26,7 +26,7 @@ run:
 	uv run uvicorn src.main:app --host 0.0.0.0 --port 8001
 
 docker-build:
-	docker build -t service-template .
+	docker build -t job-service-template .
 
 docker-run:
-	docker run -p 8001:8001 service-template
+	docker run -p 8001:8001 job-service-template

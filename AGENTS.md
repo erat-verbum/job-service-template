@@ -1,6 +1,6 @@
-# Service Template: Generic FastAPI Service
+# Job Service Template: Generic FastAPI Service
 
-Purpose: Template for enhancia-3 services. FastAPI app with Pydantic models, tests, Makefile/Docker. Copy/customize for new services (e.g., video processing).
+Purpose: Template for enhancia-3 services with job management. FastAPI app with Pydantic models, tests, Makefile/Docker. Copy/customize for new services (e.g., video processing).
 
 ## File Tree
 

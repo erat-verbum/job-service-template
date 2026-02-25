@@ -30,3 +30,12 @@ docker-build:
 
 docker-run:
 	docker run -p 8001:8001 job-service-template
+
+up:
+	docker-compose up -d
+
+up-build:
+	docker-compose up -d --build
+
+down:
+	docker-compose down

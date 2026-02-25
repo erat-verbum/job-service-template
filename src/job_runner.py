@@ -17,7 +17,7 @@ class JobRunner:
             if self._get_status() == "cancelled":
                 return {"cancelled": True}
 
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.1)
             if self._job_ref:
                 self._job_ref["progress"] = i * 10
                 self._job_ref["result"] = {"step": i, "message": f"Processing step {i}"}

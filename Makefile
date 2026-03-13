@@ -3,6 +3,7 @@
 install:
 	uv venv --clear
 	uv sync
+	uv run pre-commit install
 
 lint:
 	uv run ruff check src test --fix

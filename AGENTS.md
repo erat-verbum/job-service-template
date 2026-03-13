@@ -1,61 +1,44 @@
-# Job Service Template: Generic FastAPI Service
+# Job Service Template
 
-Purpose: Generic FastAPI service template with job management. FastAPI app with Pydantic models, tests, Makefile/Docker. Copy/customize for new services.
+Generic FastAPI service template for running a single job at a time. Copy and customize this template to create new services.
 
-## Development Workflow
+## Features
 
-1. **Clarify requirements**: Ask clarifying questions of the user to understand the task fully.
-2. **Plan the approach**: Create/update a TODO list to outline the steps needed to complete the task.
-3. **Research**: Use context7 to look up how libraries work when needed for the task.
-4. **Implement**: Make targeted, small changes, one-by-one to ensure quality and avoid errors.
-5. **Verify**: Read the modified files to ensure the changes are correct.
-6. **Lint and Type Check**: Run linting (`make lint`), fix linting issues (`make lint-fix`), and type checking (`make check`) to ensure code quality.
-7. **Test**: Run tests to verify functionality. Then run tests (`make test` for all, `make test-unit`/`make test-int` for specific types).
-8. **Complete**: Do not stop until all tasks on the TODO list are completed and verified.
+- FastAPI-based REST API
+- Job management (start, status, cancel)
+- Single job at a time (returns 409 Conflict if a job is already running)
+- Progress tracking
+- Health check endpoint
+- Pydantic models for data validation
+- Docker support
+- Unit and integration tests
 
-## Rules of Engagement
+## Quick Start
 
-1. Think incredibly hard and long before getting to the Implement step, writing lots and lots, considering all possible options and then choosing the right one
-2. Be concise specifically when responding to the user that a task has been completed
-
-## Makefile Usage
-
-Before running any command, read the relevant Makefile.
-
-### Service-level commands
-
-- `make install`: uv venv/sync
-- `make lint lint-fix check`: ruff/pyright
-- `make test test-unit test-int`: pytest
-- `make run`: uvicorn
-
-## File Tree
-
-```
-src/
-├── main.py              # FastAPI entry point with HTTP endpoints
-├── models.py            # Pydantic models for requests, responses, and data structures
-└── job_runner.py       # Job execution logic with progress and cancellation support
-
-test/
-└── unit/                # Unit tests (test__main__health.py etc.)
+```bash
+make install  # Install dependencies
+make run      # Start the service
 ```
 
-## File Explanations
+## Commands
 
-- **main.py**: FastAPI application with endpoints:
-  - `GET /health` - Health check
-  - `POST /job` - Start a job
-  - `GET /job` - Get current job status
-  - `POST /job/cancel` - Cancel running job
+- `make install` - Install dependencies (uv venv/sync)
+- `make lint` - Run linters (ruff)
+- `make lint-fix` - Fix linting issues automatically
+- `make check` - Type checking (pyright)
+- `make test` - Run all tests
+- `make test-unit` - Run unit tests only
+- `make test-int` - Run integration tests only
+- `make run` - Start the service with uvicorn
 
-- **models.py**: Pydantic models including `Job`, `JobStatus`, `StartJobRequest`, and health check responses.
+## API Endpoints
 
-- **job_runner.py**: Placeholder job implementation. Modify `run_job()` to implement actual job logic.
+- `GET /health` - Health check
+- `POST /job` - Start a job (returns 409 if a job is already running)
+- `GET /job` - Get job status
+- `POST /job/cancel` - Cancel running job
 
-## Project Folder Structure
-
-Each service follows this folder structure:
+## File Structure
 
 ```
 service-name/
@@ -73,6 +56,18 @@ service-name/
     └── integration/ # Integration tests
         └── test__<name_of_file_being_tested>__<name_of_feature_being_tested>.py
 ```
+
+### Source Files
+
+- **main.py**: FastAPI application with endpoints:
+  - `GET /health` - Health check
+  - `POST /job` - Start a job
+  - `GET /job` - Get current job status
+  - `POST /job/cancel` - Cancel running job
+
+- **models.py**: Pydantic models including `Job`, `JobStatus`, `StartJobRequest`, and health check responses.
+
+- **job_runner.py**: Placeholder job implementation. Modify `run_job()` to implement actual job logic.
 
 ## Service Components
 
@@ -105,6 +100,22 @@ service-name/
 - **Test naming**: Test files should be named:
   - `test__<name_of_file_being_tested>.py` for simple cases where the file contains tests for a single feature
   - `test__<name_of_file_being_tested>__<name_of_feature_being_tested>.py` when the file would become too large or contain tests for multiple distinct features
+
+## Development Workflow
+
+1. **Clarify requirements**: Ask clarifying questions of the user to understand the task fully.
+2. **Plan the approach**: Create/update a TODO list to outline the steps needed to complete the task.
+3. **Research**: Use context7 to look up how libraries work when needed for the task.
+4. **Implement**: Make targeted, small changes, one-by-one to ensure quality and avoid errors.
+5. **Verify**: Read the modified files to ensure the changes are correct.
+6. **Lint and Type Check**: Run linting (`make lint`), fix linting issues (`make lint-fix`), and type checking (`make check`) to ensure code quality.
+7. **Test**: Run tests to verify functionality. Then run tests (`make test` for all, `make test-unit`/`make test-int` for specific types).
+8. **Complete**: Do not stop until all tasks on the TODO list are completed and verified.
+
+## Rules of Engagement
+
+1. Think incredibly hard and long before getting to the Implement step, writing lots and lots, considering all possible options and then choosing the right one
+2. Be concise specifically when responding to the user that a task has been completed
 
 ## HTTP Interface
 

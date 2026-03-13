@@ -23,8 +23,7 @@ make run      # Start the service
 ## Commands
 
 - `make install` - Install dependencies (uv venv/sync)
-- `make lint` - Run linters (ruff)
-- `make lint-fix` - Fix linting issues automatically
+- `make lint` - Run linters (ruff) and auto-fix issues
 - `make check` - Type checking (ty)
 - `make test` - Run all tests
 - `make test-unit` - Run unit tests only
@@ -108,7 +107,7 @@ service-name/
 3. **Research**: Use context7 to look up how libraries work when needed for the task.
 4. **Implement**: Make targeted, small changes, one-by-one to ensure quality and avoid errors.
 5. **Verify**: Read the modified files to ensure the changes are correct.
-6. **Lint and Type Check**: Run linting (`make lint`), fix linting issues (`make lint-fix`), and type checking (`make check`) to ensure code quality.
+6. **Lint and Type Check**: Run linting (`make lint`) and type checking (`make check`) to ensure code quality.
 7. **Test**: Run tests to verify functionality. Then run tests (`make test` for all, `make test-unit`/`make test-int` for specific types).
 8. **Complete**: Do not stop until all tasks on the TODO list are completed and verified.
 

@@ -1,13 +1,10 @@
-.PHONY: install lint lint-fix check test test-unit test-int run
+.PHONY: install lint check test test-unit test-int run
 
 install:
 	uv venv --clear
 	uv sync
 
 lint:
-	uv run ruff check src test
-
-lint-fix:
 	uv run ruff check src test --fix
 
 check:

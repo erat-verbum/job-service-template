@@ -1,4 +1,4 @@
-.PHONY: install lint check test test-unit test-int run cli
+.PHONY: install lint check test test-unit test-int run run-cli
 
 install:
 	uv venv --clear
@@ -23,7 +23,7 @@ test-int:
 run:
 	uv run uvicorn src.main:app --host 0.0.0.0 --port 8001
 
-cli:
+run-cli:
 	PYTHONPATH=. uv run python -m src.cli
 
 docker-build:

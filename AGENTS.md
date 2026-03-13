@@ -25,7 +25,7 @@ make run      # Start the service
 - `make install` - Install dependencies (uv venv/sync)
 - `make lint` - Run linters (ruff)
 - `make lint-fix` - Fix linting issues automatically
-- `make check` - Type checking (pyright)
+- `make check` - Type checking (ty)
 - `make test` - Run all tests
 - `make test-unit` - Run unit tests only
 - `make test-int` - Run integration tests only
@@ -74,7 +74,7 @@ service-name/
 - **Dockerfile**: Container configuration for the service
 - **uv**: Package manager (installed in local `.venv`)
 - **ruff**: Linting and formatting
-- **pyright**: Type checking
+- **ty**: Type checking
 - **FastAPI**: Interface with other services
 - **pyproject.toml**: Project configuration
 - **Python `requests` library**: For making HTTP API calls to external services

@@ -14,7 +14,7 @@ dependencies = [
     "fastapi>=0.100.0",
     "uvicorn[standard]>=0.38.0,<2.0.0",
     "ruff>=0.6.0",
-    "pyright>=1.1.349",
+    "ty>=0.0.1",
     "pytest>=8.0.0",
     "pytest-cov>=4.0.0",
     "httpx",
@@ -23,10 +23,12 @@ dependencies = [
 [tool.uv]
 package = false
 
-[tool.pyright]
-exclude = [
-    ".venv/**"
-]
+[tool.ty.src]
+include = ["src", "test"]
+exclude = [".venv"]
+
+[tool.ty.rules]
+all = "warn"
 
 [pytest]
 pythonpath = ["src"]

@@ -45,6 +45,9 @@ htmlcov/
 # Ruff
 .ruff_cache/
 
+# ty
+.ty_cache/
+
 # Environments
 .env
 .venv

@@ -17,8 +17,20 @@ Generic FastAPI service template for running a single job at a time. Copy and cu
 ## Quick Start
 
 ```bash
-make install  # Install dependencies
-make run      # Start the service
+docker run -p 8000:8000 ghcr.io/erat-verbum/job-service-template:latest
+```
+
+Then access the API at http://localhost:8000
+
+## Local Development Setup
+
+Clone the repository and run the service locally:
+
+```bash
+git clone <repository-url>
+cd job-service-template
+make install
+make run
 ```
 
 ## Commands

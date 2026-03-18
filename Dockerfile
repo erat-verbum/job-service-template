@@ -16,9 +16,11 @@ COPY .git /app/.git
 # Set PYTHONPATH before installing/running
 ENV PYTHONPATH=/app
 
-# Install any needed packages specified in requirements.txt
-RUN apt-get update && apt-get install -y make libatomic1 git && \
-    make install && \
+# Install system dependencies
+RUN apt-get update && apt-get install -y make libatomic1 git
+
+# Install dependencies and run checks
+RUN make install && \
     make lint && \
     make check && \
     make quality && \

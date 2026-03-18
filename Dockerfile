@@ -7,8 +7,11 @@ RUN pip install uv
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy only necessary files for building and testing
+COPY pyproject.toml uv.lock Makefile /app/
+COPY src/ /app/src/
+COPY test/ /app/test/
+COPY .git /app/.git
 
 # Set PYTHONPATH before installing/running
 ENV PYTHONPATH=/app

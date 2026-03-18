@@ -20,6 +20,9 @@ dependencies = [
     "pytest-cov>=4.0.0",
     "httpx",
     "pre-commit>=3.0.0",
+    "bandit>=1.7.0",
+    "xenon>=0.9.0",
+    "vulture>=2.0",
 ]
 
 [project.scripts]
@@ -37,3 +40,15 @@ all = "warn"
 
 [pytest]
 pythonpath = ["src"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "build", "dist"]
+skips = ["B101"]
+severity = "high"
+confidence = "high"
+
+[tool.vulture]
+exclude = ["test_*.py", "*_test.py", ".venv"]
+ignore_names = ["visit_*", "do_*", "sig", "frame"]
+min_confidence = 80
+paths = ["src", "test"]

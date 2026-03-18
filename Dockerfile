@@ -14,10 +14,12 @@ COPY . /app
 ENV PYTHONPATH=/app
 
 # Install any needed packages specified in requirements.txt
-RUN apt-get update && apt-get install -y make libatomic1 && \
+RUN apt-get update && apt-get install -y make libatomic1 git && \
     make install && \
     make lint && \
-    make check
+    make check && \
+    make quality && \
+    make test-unit
 
 # Create non-root user with UID 1000 and GID 1000
 RUN groupadd -r -g 1000 appgroup && useradd -r -u 1000 -g appgroup appuser

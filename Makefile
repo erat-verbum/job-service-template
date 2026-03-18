@@ -1,4 +1,4 @@
-.PHONY: install lint check test test-unit test-int run run-cli
+.PHONY: install lint check quality test test-unit test-int run run-cli
 
 install:
 	uv venv --clear
@@ -10,6 +10,11 @@ lint:
 
 check:
 	PYTHONPATH=. uv run ty check src test
+
+quality:
+	uv run bandit -c pyproject.toml -r src test
+	uv run xenon --max-average=B --max-modules=C --max-absolute=C src
+	uv run vulture --min-confidence=80 src test
 
 test:
 	PYTHONPATH=. uv run pytest --cov=src --cov-report=term-missing --tb=short

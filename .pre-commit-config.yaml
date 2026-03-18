@@ -11,6 +11,11 @@ repos:
         entry: make check
         language: system
         types: [python]
+      - id: quality
+        name: quality
+        entry: make quality
+        language: system
+        types: [python]
       - id: test-unit
         name: test-unit
         entry: make test-unit

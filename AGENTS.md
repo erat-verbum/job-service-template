@@ -12,7 +12,7 @@ Generic FastAPI service template for running a single job at a time. Copy and cu
 - Pydantic models for data validation
 - Docker support
 - Unit and integration tests
-- Pre-commit hook (runs lint, type check, and unit tests on commit)
+- Pre-commit hook (runs lint, type check, quality checks, and unit tests on commit)
 
 ## Quick Start
 
@@ -38,6 +38,7 @@ make run
 - `make install` - Install dependencies (uv venv/sync) and setup pre-commit hook
 - `make lint` - Run linters (ruff) and auto-fix issues
 - `make check` - Type checking (ty)
+- `make quality` - Code quality checks (bandit, xenon, vulture)
 - `make test` - Run all tests
 - `make test-unit` - Run unit tests only
 - `make test-int` - Run integration tests only
@@ -87,9 +88,12 @@ service-name/
 
 - **Dockerfile**: Container configuration for the service
 - **uv**: Package manager (installed in local `.venv`)
-- **pre-commit**: Git hook framework (runs lint, type check, and unit tests on commit)
+- **pre-commit**: Git hook framework (runs lint, type check, quality checks, and unit tests on commit)
 - **ruff**: Linting and formatting
 - **ty**: Type checking
+- **bandit**: Security vulnerability scanning
+- **xenon**: Cyclomatic complexity monitoring
+- **vulture**: Dead code detection
 - **FastAPI**: Interface with other services
 - **pyproject.toml**: Project configuration
 - **Python `requests` library**: For making HTTP API calls to external services
@@ -171,5 +175,6 @@ The Dockerfile must include:
 RUN make install && \
     make lint && \
     make check && \
+    make quality && \
     make test-unit
 ```
